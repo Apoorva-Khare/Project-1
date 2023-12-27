@@ -443,7 +443,7 @@ if st.button("Collect and Store data"):
             output = channel_details(channel)
             st.success(output)
             
-if st.button("Migrate to SQL"):
+if st.button("Migrate to SQL and MongoDB"):
     display = tables()
     st.success(display)        
     
