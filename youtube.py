@@ -534,15 +534,8 @@ elif question == '9. Average duration of all videos in each channel':
     query9 =  "select Channel_Name as ChannelName, avg(Duration) as average_duration from videos group by Channel_Name;"   
     cursor.execute(query9)
     t9=cursor.fetchall()
-    t9 = pd.DataFrame(t9, columns=['ChannelTitle', 'Average Duration'])
-    T9=[]
-    for index, row in t9.iterrows():
-        channel_title = row['ChannelTitle']
-        average_duration = row['Average Duration']
-        average_duration_str = str(average_duration)
-        T9.append({"Channel Title": channel_title ,  "Average Duration(Seconds)": average_duration_str})
-    st.write(pd.DataFrame(T9))
-
+    st.write(pd.DataFrame(t9, columns=['ChannelTitle', 'Average Duration(sec)']))
+    
 elif question == '10. Videos with highest number of comments':
     query10 = '''select Title as VideoTitle, Channel_Name as ChannelName, Comments as Comments from videos 
                        where Comments is not null order by Comments desc;'''
